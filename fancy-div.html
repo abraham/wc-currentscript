@@ -1,0 +1,19 @@
+<template id="fancy-div">
+  <div>is fancy</div>
+</template>
+
+<script>
+  class FancyDiv extends HTMLElement {
+    constructor() {
+      super();
+
+      let shadowRoot = this.attachShadow({ mode: 'open' });
+      console.log('document.currentScript', document.currentScript);
+      let template = document.currentScript.ownerDocument.querySelector('#fancy-div');
+      let instance = template.content.cloneNode(true);
+      shadowRoot.appendChild(instance);
+    }
+  }
+
+  customElements.define('fancy-div', FancyDiv);
+</script>

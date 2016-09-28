@@ -1,0 +1,24 @@
+<html>
+<head>
+
+  <link rel="import" href="fancy-div.html">
+
+
+</head>
+<body>
+  <p>Unable to get imported template from import JS when element made with createElement</p>
+
+  <p>When `document.createElement('fancy-div')` is called, `document.currentScript.ownerDocument` inside the `FancyDiv` `constructor` refers to the `index.html` document.</p>
+  <p>The same `document.currentScript.ownerDocument` called by having `&lt;fancy-div&gt;&lt;/fancy-div&gt;` within `index.html` refers to the imported `fancy-div.html` document.</p>
+
+  <div id='list'>
+    <p>There should be two "is fancy"s rendered here:<p>
+    <fancy-div></fancy-div>
+  </div>
+
+  <script>
+    let fd = document.createElement('fancy-div');
+    document.querySelector('#list').appendChild(fd);
+  </script>
+</body>
+</html>
